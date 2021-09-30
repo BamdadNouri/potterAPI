@@ -11,7 +11,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-const filesDir = ""
+const filesDir = "/assets"
 const APIToken = ""
 const base = ""
 
