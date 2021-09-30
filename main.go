@@ -24,7 +24,7 @@ func main() {
 }
 
 func getFiles() (files []string, err error) {
-	fileLists, err := ioutil.ReadDir(fmt.Sprintf("%s/", filesDir))
+	fileLists, err := ioutil.ReadDir(fmt.Sprintf("%s", filesDir))
 	if err != nil {
 		return []string{}, err
 	}

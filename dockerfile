@@ -1,5 +1,5 @@
 # Start from golang base image
-FROM golang:alpine as builder
+FROM m.docker-registry.ir/golang:alpine as builder
 
 # ENV GO111MODULE=on
 
@@ -23,7 +23,7 @@ COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
 
 # Start a new stage from scratch
-FROM alpine:latest
+FROM m.docker-registry.ir/alpine:latest
 RUN apk --no-cache add ca-certificates
 
 WORKDIR /root/
