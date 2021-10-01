@@ -7,7 +7,7 @@ services:
       - 9009:9009 
     volumes: 
       # - /assets:/var/www/html/files
-      - /var/www/html/files:/assets
+      - /Users/bamdad/Downloads/Harry Potter AudioBook/b1:/assets
     restart: on-failure
 
 # volumes: 

@@ -11,7 +11,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-const filesDir = "/assets"
+const filesDir = "assets"
 const APIToken = ""
 const base = ""
 
@@ -37,9 +37,19 @@ func getFiles() (files []string, err error) {
 }
 
 func runAPI(files []string) {
-	r := gin.Default()
+	engine := gin.Default()
+	// gin.SetMode(gin.ReleaseMode)
+	gin.DefaultWriter = ioutil.Discard
 
-	apiGroup := r.Group("api")
+	app := engine.Group("/sandbox")
+	api := app.Group("/api")
+
+	api.GET("ping", func(c *gin.Context) {
+		c.JSON(http.StatusOK, "pong")
+		return
+	})
+
+	apiGroup := engine.Group("api")
 	{
 		apiGroup.GET("/", func(c *gin.Context) {
 			token := c.GetHeader("token")
