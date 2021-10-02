@@ -64,7 +64,10 @@ func runAPI(files []string) {
 			query, _ := c.GetQuery("q")
 			var urls []string
 			for _, file := range files {
-				if query != "" || strings.Contains(strings.ToLower(file), strings.ToLower(query)) {
+				if query != "" && strings.Contains(strings.ToLower(file), strings.ToLower(query)) {
+					u, _ := url.Parse(fmt.Sprintf("%s/%s", base, file))
+					urls = append(urls, u.String())
+				} else if query == "" {
 					u, _ := url.Parse(fmt.Sprintf("%s/%s", base, file))
 					urls = append(urls, u.String())
 				}
